@@ -1,8 +1,8 @@
-﻿using Catalog.API.Data;
+﻿using Catalog.API.Data.Interfaces;
 using Catalog.API.Entities;
 using MongoDB.Driver;
 
-namespace Catalog.API.Repositories
+namespace Catalog.API.Repositories.Interfaces
 {
     public class ProductRepository : IProductRepository
     {
@@ -26,7 +26,7 @@ namespace Catalog.API.Repositories
             return await _context
                 .Products
                 .Find(p => true)
-                .ToListAsync();    
+                .ToListAsync();
         }
 
         public async Task<IEnumerable<Product>> GetProductByNameAsync(string name)
